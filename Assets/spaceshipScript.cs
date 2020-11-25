@@ -2,7 +2,8 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
+using System;
 
 public class spaceshipScript : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class spaceshipScript : MonoBehaviour
 
     public static float shipX = 0;
     public static float shipY = 0;
+
+    public AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -70,16 +73,17 @@ public class spaceshipScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("KeyCode.Space");
+            //Debug.Log("KeyCode.Space");
             // Create a new bullet at “transform.position” 
             // Which is the current position of the ship
             // Quaternion.identity = add the bullet with no rotation
+            audioSource.Play();
             Instantiate(bullet, gameObject.transform.position, Quaternion.identity);            
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("KeyCode.Return");
+            //Debug.Log("KeyCode.Return");
             // Create a new bullet at “transform.position” 
             // Which is the current position of the ship
             // Quaternion.identity = add the bullet with no rotation
@@ -94,12 +98,19 @@ public class spaceshipScript : MonoBehaviour
             speed = speed + Time.deltaTime;
             if (speed > 1.0f)
             {
-                Debug.Log(gameObject.transform.position.y + " : " + speed);
+                //Debug.Log(gameObject.transform.position.y + " : " + speed);
                 speed = 0.0f;
             }
         }
 
         //StartCoroutine(GetRequest("http://api.icndb.com/jokes/12"));
+        //Debug.Log("Show Called: " + Screen.width + "/" + Screen.height + "[" +  gameObject.transform.position.x +"/" + gameObject.transform.position.y+"]");
+        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        Vector2 screenOrigo = Camera.main.ScreenToWorldPoint(Vector2.zero);
+        Scene scene = SceneManager.GetActiveScene();
+        //Debug.Log("Show Called[0]: "+screenBounds + " | [" + gameObject.transform.position.x +"/" + gameObject.transform.position.y+"]");
+        //Debug.Log("Show Called[1]: "+screenOrigo + " | [" + gameObject.transform.position.x +"/" + gameObject.transform.position.y+"]");
+
     }
 
 IEnumerator GetRequest(string uri)
@@ -115,7 +126,7 @@ IEnumerator GetRequest(string uri)
 
             if (webRequest.isNetworkError)
             {
-                Debug.Log(": Error: " + webRequest.error);
+                //Debug.Log(": Error: " + webRequest.error);
             }
             else
             {

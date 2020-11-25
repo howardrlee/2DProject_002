@@ -12,15 +12,22 @@ public class bulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Bullet Start.");
+        //Debug.Log("Bullet Start.");
         rb2d = GetComponent<Rigidbody2D> ();  
         rb2d.velocity = new Vector2(0.0f, speed);
     }
 
+    private void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        //Do something
+        Debug.Log("Bullet Collision");
+    }
+
+
     // Function called when the object goes out of the screen
     void OnBecameInvisible() {
         // Destroy the bullet 
-        Debug.Log("Bullet Destroyed.");
+        //Debug.Log("Bullet Destroyed.");
         //Destroy(gameObject);
          enabled = false;
     } 
