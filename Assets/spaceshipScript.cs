@@ -8,7 +8,7 @@ using System;
 public class spaceshipScript : MonoBehaviour
 {
     private bool moving = false;
-    public float speed;                //Floating point variable to store the player's movement speed.
+    public float speed = 2.0f;                //Floating point variable to store the player's movement speed.
 
     private Rigidbody2D rb2d;        //Store a reference to the Rigidbody2D component required to use 2D Physics.
 
@@ -19,6 +19,10 @@ public class spaceshipScript : MonoBehaviour
 
     public AudioSource audioSource;
 
+  private void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        //audioSource.Play();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +55,7 @@ public class spaceshipScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rb2d.velocity = new Vector2(2.0f, 0.0f);
+            rb2d.velocity = new Vector2(5.0f, 0.0f);
             moving = true;
             speed = 0.0f;
         } else
@@ -59,7 +63,7 @@ public class spaceshipScript : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rb2d.velocity = new Vector2(-2.0f, 0.0f);
+            rb2d.velocity = new Vector2(-5.0f, 0.0f);
             moving = true;
             speed = 0.0f;
         } else

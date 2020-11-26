@@ -10,6 +10,9 @@ public class bulletScript : MonoBehaviour
     public static float bulletX = 0;
     public static float bulletY = 0;
     // Start is called before the first frame update
+
+    public AudioSource audioSource;
+
     void Start()
     {
         //Debug.Log("Bullet Start.");
@@ -19,8 +22,10 @@ public class bulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        //Do something
         Debug.Log("Bullet Collision");
+        //audioSource.Play();
+        //Destroy(gameObject);
+        //Do something
     }
 
 
@@ -30,6 +35,7 @@ public class bulletScript : MonoBehaviour
         //Debug.Log("Bullet Destroyed.");
         //Destroy(gameObject);
          enabled = false;
+         Destroy(gameObject);
     } 
 
     // Update is called once per frame

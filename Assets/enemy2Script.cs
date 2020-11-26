@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
-public class enemy1Script : MonoBehaviour
+public class enemy2Script : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb2d;        //Store a reference to the Rigidbody2D component required to use 2D Physics.
@@ -16,25 +16,39 @@ public class enemy1Script : MonoBehaviour
     DateTime destroyTime = DateTime.UtcNow;
 
     public AudioSource audioSource;
+
+    public float speed = -5.0f;
+
+    void OnBecameInvisible() {
+        // Destroy the enemy
+        
+        Destroy(gameObject, audioSource.clip.length);
+    } 
     
     void Start()
     {
+        Debug.Log("Enemy[2] Spawned!!!");
+        //audioSource.Play();
         rb2d = GetComponent<Rigidbody2D> ();
-        Scene scene = SceneManager.GetActiveScene();
+        // Add a vertical speed to the enemy
+        rb2d.velocity = new Vector2(0.0f, speed);
 
-        //soundExplosion = Resources.Load<AudioClip>("Explosion 1.wav");
-        //audioSource = GetComponent<AudioSource>();
+        // Make the enemy rotate on itself
+        rb2d.angularVelocity = 200.0f;
     }
 
-     private void OnTriggerEnter2D(Collider2D collider2D)
+    private void OnTriggerEnter2D(Collider2D collider2D)
     {
+        
         audioSource.Play();
-        //Do something
-        Debug.Log("Enemy Collision");
-        //Destroy(gameObject);
-        gameObject.SetActive(false);
-        destroyed = true;
-        destroyTime = DateTime.UtcNow;
+        transform.position = Vector3.one * 9999f;
+        Destroy(gameObject, audioSource.clip.length);
+        String name = collider2D.gameObject.name;
+        Debug.Log("Enemy[2] Destroyed!!! ..by: " + name);
+        if (name.Equals("bullet(Clone)")) {
+            Destroy(collider2D.gameObject);
+        }
+        //gameObject.SetActive(false);
         //Invoke("show", 5.0f);
     }
 

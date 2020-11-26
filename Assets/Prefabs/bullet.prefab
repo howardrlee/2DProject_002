@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  audioSource: {fileID: 762179025326296160, guid: 93ea3c4f4a1a7d240a2f2c8c25488b47,
+    type: 3}
 --- !u!61 &-8070366617941839286
 BoxCollider2D:
   m_ObjectHideFlags: 0
