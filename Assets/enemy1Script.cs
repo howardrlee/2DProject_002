@@ -4,6 +4,11 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+// Author: Howard R. Lee
+// Email: howardrlee@yahoo.com
+// Company: Affinity Systems, Inc.
+// Date: November 23, 2020
+
 public class enemy1Script : MonoBehaviour
 {
     // Start is called before the first frame update

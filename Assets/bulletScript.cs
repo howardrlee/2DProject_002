@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Howard R. Lee
+// Email: howardrlee@yahoo.com
+// Company: Affinity Systems, Inc.
+// Date: November 23, 2020
+
 public class bulletScript : MonoBehaviour
 {
     public float speed = 6.0f;

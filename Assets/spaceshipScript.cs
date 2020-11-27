@@ -5,6 +5,12 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System;
 
+// Author: Howard R. Lee
+// Email: howardrlee@yahoo.com
+// Company: Affinity Systems, Inc.
+// Date: November 23, 2020
+
+
 public class spaceshipScript : MonoBehaviour
 {
     private bool moving = false;
